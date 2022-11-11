@@ -13,18 +13,23 @@ const Calendar = ({}) => {
 
   const openDay = (day: number) => {
     if (day <= theDay) {
+      localStorage.setItem(`advent${day}`, String(day));
       navigate(`/day/${day}`);
     }
   };
 
   const getDayStyle = (day: number): React.CSSProperties => {
+    const hasOpened = localStorage.getItem(`advent${day}`) == String(day);
+
     return day <= theDay
       ? {
           width: "18rem",
           cursor: "pointer",
+          backgroundColor: hasOpened ? "white" : "lightgreen",
         }
       : {
           width: "18rem",
+          backgroundColor: "lightgrey",
         };
   };
 
