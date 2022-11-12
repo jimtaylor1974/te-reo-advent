@@ -11,8 +11,14 @@ const Calendar = ({}) => {
   const today = new Date();
   const theDay = today.getDate();
 
+  const testMode = localStorage.getItem(`advent_test`) == "1";
+
+  const canOpen = (day: number) => {
+    return testMode || day <= theDay;
+  };
+
   const openDay = (day: number) => {
-    if (day <= theDay) {
+    if (canOpen(day)) {
       localStorage.setItem(`advent${day}`, String(day));
       navigate(`/day/${day}`);
     }
@@ -21,7 +27,7 @@ const Calendar = ({}) => {
   const getDayStyle = (day: number): React.CSSProperties => {
     const hasOpened = localStorage.getItem(`advent${day}`) == String(day);
 
-    return day <= theDay
+    return canOpen(day)
       ? {
           width: "18rem",
           cursor: "pointer",

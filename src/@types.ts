@@ -15,4 +15,5 @@ export type PageType = {
   author: string;
   contentType: ContentType;
   content?: ReactNode;
+  footer?: ReactNode;
 };
