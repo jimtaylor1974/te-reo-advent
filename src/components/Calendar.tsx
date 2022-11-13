@@ -9,9 +9,11 @@ import Title from "./Title";
 const Calendar = ({}) => {
   const navigate = useNavigate();
   const today = new Date();
+  const month = today.getMonth();
   const theDay = today.getDate();
 
-  const testMode = localStorage.getItem(`advent_test`) == "1";
+  // NOTE: Month 11 = December, JavaScript month starts at 0
+  const testMode = localStorage.getItem(`advent_test`) == "1" || month != 11;
 
   const canOpen = (day: number) => {
     return testMode || day <= theDay;
