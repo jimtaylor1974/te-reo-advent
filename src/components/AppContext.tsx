@@ -17,6 +17,7 @@ interface Props {
 
 function AppContextProvider({ children }: Props) {
   // https://codesandbox.io/s/advanced-react-page-transition-demo-typescript-nb4lzk
+  
   const [preset, setPreset] = useState("cubeToBottom");
   const [enterAnimation, setEnterAnimation] = useState("");
   const [exitAnimation, setExitAnimation] = useState("");
